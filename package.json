@@ -9,8 +9,10 @@
     "start:prod": "npx serve -s build/public"
   },
   "dependencies": {
+    "bootstrap": "^4.5.3",
     "express": "4.17.1",
     "react": "16.14.0",
+    "react-bootstrap": "^1.4.0",
     "react-dom": "16.14.0",
     "react-router-dom": "5.2.0"
   },

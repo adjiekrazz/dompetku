@@ -2,10 +2,15 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import { hydrate } from 'react-dom';
+import Navbar from './Navbar';
+import { Container } from 'react-bootstrap'
 
 hydrate(
   <BrowserRouter>
-    <App />
+    <Navbar />
+    <Container className="mt-5">
+      <App />
+    </Container>
   </BrowserRouter>,
   document.getElementById('root')
 );
