@@ -9,6 +9,7 @@
     "start:prod": "npx serve -s build/public"
   },
   "dependencies": {
+    "@line/liff": "^2.6.0",
     "bootstrap": "^4.5.3",
     "express": "4.17.1",
     "react": "16.14.0",
