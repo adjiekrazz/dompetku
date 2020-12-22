@@ -71,7 +71,6 @@ class App extends React.Component {
         )
       }
     } else {
-      console.log('errors is : '+this.state.errors)
       return (
         <Row>
           <Col>
