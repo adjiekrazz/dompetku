@@ -17,7 +17,7 @@ class App extends React.Component {
 
   initLiff() {
     if (!this.state.liffID) {
-      this.setState({ errors: [...'Liff ID is empty']})
+      this.setState({ errors: [...this.state.errors, 'Liff ID is empty']})
     } else {
       liff.init({ liffId: this.state.liffID}, 
         async () => {
@@ -71,7 +71,7 @@ class App extends React.Component {
         )
       }
     } else {
-      console.log('errors lenght is : '+this.state.errors)
+      console.log('errors is : '+this.state.errors)
       return (
         <Row>
           <Col>
