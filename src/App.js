@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Row, Col, Card, Button } from 'react-bootstrap';
 import liff from '@line/liff';
 import Home from './pages/Home';
+import { connect } from 'react-redux';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,8 +11,6 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      liffID: '',
-      liffData: {},
       errors: []
     }
   }
@@ -22,14 +21,13 @@ class App extends React.Component {
     } else {
       liff.init({ liffId: this.state.liffID}, 
         async () => {
-          this.setState({
-            liffData: {
-              isInClient: await liff.isInClient(),
-              language: await liff.getLanguage(),
-              os: await liff.getOS(),
-              isLogin: await liff.isLoggedIn()
-            }
-          })
+          const data = await {
+            isInClient: liff.isInClient(),
+            language: liff.getLanguage(),
+            os: liff.getOS(),
+            isLogin: liff.isLoggedIn()
+          }
+          this.props.setLiffData(data)
         },
         (error) => {
           this.setState({ errors: [...error] })
@@ -50,7 +48,7 @@ class App extends React.Component {
 
   render(){
     if (this.state.errors.length === 0) {
-      if (this.state.liffData.isLogin) {
+      if (this.props.liffData.isLogin) {
         return (
           <Switch>
               <Route exact path="/" component={Home} />
@@ -92,4 +90,16 @@ class App extends React.Component {
   }
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return {
+    liffData: state.liffdata
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLiffData: (data) => dispatch({ type: 'SET_LIFF_DATA', data })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
