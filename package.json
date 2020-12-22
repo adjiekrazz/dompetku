@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "razzle start --type=spa",
+    "start": "npm run production",
+    "start:dev": "razzle start --type=spa",
     "build": "razzle build --type=spa",
     "test": "razzle test --env=jsdom",
-    "start:prod": "npx serve -s build/public"
+    "production": "npx serve -s build/public"
   },
   "dependencies": {
     "@line/liff": "^2.6.0",
