@@ -32,7 +32,7 @@ export const rupiah = (rp, strlength = 0, dot = false) => {
             newRp = rp
         }
     } else {
-        newRp = rp
+        newRp = rp+',00'
     }
 
     if (strlength !== 0) {
