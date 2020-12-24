@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux'
 import user from './user'
-import wallet from './wallet'
+import income from './income'
+import expense from './expense'
 import liffdata from './liffdata'
 
 const rootReducer = combineReducers({
     user,
-    wallet,
+    income,
+    expense,
     liffdata
 })
 
