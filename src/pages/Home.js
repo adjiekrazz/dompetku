@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Col, Card, Badge } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { rupiah } from '../utils'
 
 class Home extends React.Component {
   constructor(props){
@@ -13,7 +14,7 @@ class Home extends React.Component {
           <Card>
             <Card.Body>
               Pemasukan <br></br>
-              <Badge variant="success">Rp. {this.props.incomeTotal}</Badge>
+              <Badge variant="success">{rupiah(this.props.incomeTotal, 0, true)}</Badge>
             </Card.Body>
           </Card>
         </Col>
@@ -37,7 +38,7 @@ class Home extends React.Component {
           <Card>
             <Card.Body>
               Pengeluaran <br></br>
-              <Badge variant="danger">Rp. 26.000,00</Badge>
+              <Badge variant="danger">{rupiah(this.props.expenseTotal, 0, true)}</Badge>
             </Card.Body>
           </Card>
         </Col>
@@ -58,7 +59,8 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    incomeTotal: state.income.reduce((first, n) => Number(first.amount) + Number(n.amount))
+    incomeTotal: state.income.length === 0 ? 0 : state.income.reduce((first, n) => Number(first.amount) + Number(n.amount)),
+    expenseTotal: state.expense.length === 0 ? 0 : state.expense.reduce((first, n) => Number(first.amount) + Number(n.amount))
   }
 }
 
