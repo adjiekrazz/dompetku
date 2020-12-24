@@ -8,9 +8,9 @@ const initialState = {
 export default function user(state = initialState, action) {
     switch (action.type) {
         case SAVE_USER:
-            return ( state.id = action.id, state.username = action.username )
+            return { id: action.id, username: action.username }
         case REMOVE_USER:
-            return ( state.id = '', state.username = '' )
+            return { id: '', username: '' }
         default:
             return state
     }
