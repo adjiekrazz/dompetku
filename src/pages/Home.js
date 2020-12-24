@@ -1,7 +1,11 @@
 import React from 'react'
 import { Row, Col, Card, Badge } from 'react-bootstrap'
+import { connect } from 'react-redux'
 
 class Home extends React.Component {
+  constructor(props){
+    super(props);
+  }
   render() {
     return (
       <Row>
@@ -9,7 +13,7 @@ class Home extends React.Component {
           <Card>
             <Card.Body>
               Pemasukan <br></br>
-              <Badge variant="success">Rp. 5.000.000,00</Badge>
+              <Badge variant="success">Rp. {this.props.incomeTotal}</Badge>
             </Card.Body>
           </Card>
         </Col>
@@ -52,4 +56,10 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    incomeTotal: state.income.reduce((first, n) => Number(first.amount) + Number(n.amount))
+  }
+}
+
+export default connect(mapStateToProps)(Home);
