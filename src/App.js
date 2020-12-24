@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Row, Col, Card, Button } from 'react-bootstrap';
-import liff from '@line/liff';
-import Home from './pages/Home';
 import { connect } from 'react-redux';
+import liff from '@line/liff';
+import routes from './routes';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -51,7 +51,9 @@ class App extends React.Component {
       if (this.props.liffData.isLogin) {
         return (
           <Switch>
-              <Route exact path="/" component={Home} />
+              {routes.map((route, i) => 
+                <Route key={i} {...route}></Route>
+              )}
           </Switch>
         );
       } else {
@@ -92,7 +94,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    liffData: state.liffdata
+    liffData: state.liffdata,
   }
 }
 
