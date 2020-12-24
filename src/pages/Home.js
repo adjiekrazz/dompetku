@@ -16,7 +16,7 @@ class Home extends React.Component {
         <Col className="col-sm-6 col-lg-3 mb-4">
           <Card>
             <Card.Body>
-              Saldo Anda <br></br>
+              Piutang <br></br>
               <Badge variant="primary">Rp. 17.000,00</Badge>
             </Card.Body>
           </Card>
@@ -34,6 +34,16 @@ class Home extends React.Component {
             <Card.Body>
               Pengeluaran <br></br>
               <Badge variant="danger">Rp. 26.000,00</Badge>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col className="col-lg-12">
+          <Card>
+            <Card.Body>
+              <Card.Text className="text-center">
+                Saldo Anda : Rp. 20.000,00 <br></br>
+                <i>Kurangi belanja yang tidak perlu, belajarlah hemat atau gunakan untuk investasi masa depan.</i>
+              </Card.Text>
             </Card.Body>
           </Card>
         </Col>
