@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Row, Col, Card, Table, Button, Modal, Form } from 'react-bootstrap'
+import { rupiah, shortDate } from '../utils'
 
 class AddModal extends React.Component {
   constructor(props) {
@@ -81,8 +82,13 @@ class Income extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      addModalShow: false
+      addModalShow: false,
+      total: 'Rp. 0,00'
     }
+  }
+
+  componentDidMount() {
+    this.setState({ total: rupiah(this.props.income.reduce((first, n) => Number(first.amount) + Number(n.amount)), 0, true) })
   }
 
   getID() {
@@ -106,7 +112,7 @@ class Income extends React.Component {
         <Col className="col-lg-12 mb-4">
           <Card>
             <Card.Body>
-              <Card.Text>Total Pemasukan : Rp. 5.000.000,00</Card.Text>
+              <Card.Text>Total Pemasukan : {this.state.total}</Card.Text>
               <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
@@ -119,8 +125,8 @@ class Income extends React.Component {
                   {this.props.income.length > 0 ? this.props.income.map((value, key) => {
                     return (
                       <tr key={key}>
-                        <td>{value.date}</td>
-                        <td>{value.amount}</td>
+                        <td>{shortDate(value.date)}</td>
+                        <td>{rupiah(value.amount, 0, true)}</td>
                         <td>{value.desc}</td>
                       </tr>
                     )
@@ -151,6 +157,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addIncome: (data) => { 
       dispatch({ type: 'ADD_INCOME', data })
+    },
+    deleteIncome: (id) => {
+      dispatch({ type: 'DELETE_INCOME', id})
     }
   }
 }
