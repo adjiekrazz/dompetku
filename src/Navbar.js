@@ -46,7 +46,7 @@ class Navigation extends React.Component {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto"></Nav>
                     <Nav>
-                        <Nav.Link eventKey={2} href="#memes">
+                        <Nav.Link eventKey={2} href="#">
                             Login
                         </Nav.Link>
                     </Nav>
@@ -57,7 +57,7 @@ class Navigation extends React.Component {
     }
 
     render() {
-        if (this.props.user.id !== '') {
+        if (this.props.liffData.isLogin || this.props.liffData.isInClient) {
             return this.isLogin()
         } else {
             return this.isntLogin()
@@ -67,7 +67,7 @@ class Navigation extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        liffData : state.liffdata
     }
 }
 
