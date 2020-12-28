@@ -89,7 +89,7 @@ class Debt extends React.Component {
 
   componentDidMount() {
     if (this.props.debt.length !== 0) {
-      this.setState({ total: rupiah(this.props.debt.reduce((first, n) => Number(first.amount) + Number(n.amount)), 0, true) })
+      this.setState({ total: rupiah(this.props.debt.length === 0 ? 0 : this.props.debt.reduce((val, n) => (val + Number(n.amount)), 0), 0, true) })
     }
   }
 

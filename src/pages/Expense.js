@@ -89,7 +89,7 @@ class Expense extends React.Component {
 
   componentDidMount() {
     if (this.props.expense.length !== 0) {
-      this.setState({ total: rupiah(this.props.expense.reduce((first, n) => Number(first.amount) + Number(n.amount)), 0, true) })
+      this.setState({ total: rupiah(this.props.expense.length === 0 ? 0 : this.props.expense.reduce((val, n) => (val + Number(n.amount)), 0), 0, true) })
     }
   }
 

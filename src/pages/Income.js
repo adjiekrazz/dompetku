@@ -89,7 +89,7 @@ class Income extends React.Component {
 
   componentDidMount() {
     if (this.props.income.length !== 0) {
-      this.setState({ total: rupiah(this.props.income.reduce((first, n) => Number(first.amount) + Number(n.amount)), 0, true) })
+      this.setState({ total: rupiah(this.props.income.length === 0 ? 0 : this.props.income.reduce((val, n) => (val + Number(n.amount)), 0), 0, true) })
     }
   }
 
