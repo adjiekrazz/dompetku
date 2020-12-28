@@ -27,7 +27,7 @@ class Navigation extends React.Component {
                     </Nav>
                     <Nav>
                     <Link to="/about" className="nav-link">About</Link>
-                    <Link to="#" className="nav-link" onClick={this.props.handleLogout()}>
+                    <Link to="/" className="nav-link" onClick={() => this.props.handleLogout}>
                         Keluar
                     </Link>
                     </Nav>
@@ -57,7 +57,7 @@ class Navigation extends React.Component {
     }
 
     render() {
-        if (this.props.user.id !== '') {
+        if (this.props.liffData.isLogin || this.props.liffData.isInClient) {
             return this.isLogin()
         } else {
             return this.isntLogin()
@@ -67,7 +67,8 @@ class Navigation extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        liffData: state.liffdata
     }
 }
 
