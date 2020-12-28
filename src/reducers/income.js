@@ -11,6 +11,7 @@ export default function income(state = initialState, action) {
                     action.data
             ]
         case DELETE_INCOME:
+            localStorage.setItem('income_data', JSON.stringify(state.filter((item) => item.id !== action.id)))
             return state.filter((item) => item.id !== action.id);
         default: 
             return state;

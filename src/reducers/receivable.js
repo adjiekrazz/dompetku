@@ -11,6 +11,7 @@ export default function receivable(state = initialState, action) {
                     action.data
                 ]
             case DELETE_RECEIVABLE:
+                localStorage.setItem('receivable_data', JSON.stringify(state.filter((item) => item.id !== action.id)))
                 return state.filter((item) => item.id !== action.id);
         default: 
             return state;

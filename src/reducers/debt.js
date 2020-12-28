@@ -10,8 +10,9 @@ export default function debt(state = initialState, action) {
                     ...state,
                     action.data
                 ]
-            case DELETE_DEBT:
-                return state.filter((item) => item.id !== action.id);
+        case DELETE_DEBT:
+            localStorage.setItem('debt_data', JSON.stringify(state.filter((item) => item.id !== action.id)))
+            return state.filter((item) => item.id !== action.id);
         default: 
             return state;
     }

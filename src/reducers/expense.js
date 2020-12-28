@@ -11,6 +11,7 @@ export default function expense(state = initialState, action) {
                     action.data
                 ]
             case DELETE_EXPENSE:
+                localStorage.setItem('expense_data', JSON.stringify(state.filter((item) => item.id !== action.id)))
                 return state.filter((item) => item.id !== action.id);
         default: 
             return state;
