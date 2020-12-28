@@ -38,7 +38,7 @@ class AddModal extends React.Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Tambah Pengeluaran
+            Tambah Pemasukan
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -61,7 +61,7 @@ class AddModal extends React.Component {
               <Form.Label>Keterangan</Form.Label>
               <Form.Control name="desc" as="textarea" rows={2} onChange={() => this.setState({ ...this.state, desc: event.target.value })} />
               <Form.Text className="text-muted">
-                Tambahkan keterangan, misalnya <i>Cicilan Motor</i>.
+                Tambahkan keterangan, misalnya <i>Gaji Bulanan</i>.
               </Form.Text>
             </Form.Group>
             <Form.Group>
@@ -78,7 +78,7 @@ class AddModal extends React.Component {
   }
 }
 
-class Expense extends React.Component {
+class Receivable extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -88,23 +88,23 @@ class Expense extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.expense.length !== 0) {
-      this.setState({ total: rupiah(this.props.expense.reduce((first, n) => Number(first.amount) + Number(n.amount)), 0, true) })
+    if (this.props.receivable.length !== 0) {
+      this.setState({ total: rupiah(this.props.receivable.reduce((first, n) => Number(first.amount) + Number(n.amount)), 0, true) })
     }
   }
 
   getID() {
     var id;
-    if (this.props.expense.length === 0) {
+    if (this.props.receivable.length === 0) {
       id = 1;
     } else {
-      id = this.props.expense[this.props.expense.length - 1].id + 1;
+      id = this.props.receivable[this.props.receivable.length - 1].id + 1;
     }
     return id;
   }
 
   handleSubmit(data) {
-    this.props.addExpense({ id: this.getID(), ...data})
+    this.props.addReceivable({ id: this.getID(), ...data})
     this.setState({ addModalShow: false })
   }
 
@@ -114,28 +114,28 @@ class Expense extends React.Component {
         <Col className="col-lg-12 mb-4">
           <Card>
             <Card.Body>
-              <Card.Text>Total Pengeluaran : {this.state.total}</Card.Text>
+              <Card.Text>Total Piutang : {this.state.total}</Card.Text>
               <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
-                        <th>Tanggal</th>
-                        <th>Jumlah</th>
-                        <th>Keterangan</th>
+                      <th>Tanggal</th>
+                      <th>Jumlah</th>
+                      <th>Keterangan</th>
                     </tr>
                 </thead>
                 <tbody>
-                  {this.props.expense.length > 0 ? this.props.expense.map((value, key) => {
+                  {this.props.receivable.length > 0 ? this.props.receivable.map((value, key) => {
                     return (
                       <tr key={key}>
                         <td>{shortDate(value.date)}</td>
-                        <td>{rupiah(value.amount)}</td>
+                        <td>{rupiah(value.amount, 0, true)}</td>
                         <td>{value.desc}</td>
                       </tr>
                     )
-                  }) : (<tr><td className="text-center" colSpan="3">Belum ada pengeluaran.</td></tr>) }
+                  }) : (<tr><td className="text-center" colSpan="3">Tidak ada piutang.</td></tr>) }
                 </tbody>
               </Table>
-              <Button variant="success" size="sm" block onClick={() => this.setState({ addModalShow: true})}>Tambah Pengeluaran</Button>
+              <Button variant="success" size="sm" block onClick={() => this.setState({ addModalShow: true})}>Tambah Pemasukan</Button>
             </Card.Body>
           </Card>
           <AddModal
@@ -151,16 +151,19 @@ class Expense extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    expense: state.expense
+    receivable: state.receivable
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addExpense: (data) => { 
-      dispatch({ type: 'ADD_EXPENSE', data })
+    addReceivable: (data) => { 
+      dispatch({ type: 'ADD_RECEIVABLE', data })
+    },
+    deleteReceivable: (id) => {
+      dispatch({ type: 'DELETE_RECEIVABLE', id})
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Expense);
+export default connect(mapStateToProps, mapDispatchToProps)(Receivable);

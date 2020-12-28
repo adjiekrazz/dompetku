@@ -9,7 +9,7 @@ export default function income(state = initialState, action) {
             return [
                     ...state,
                     action.data
-                ]
+            ]
         case DELETE_INCOME:
             return state.filter((id) => id !== action.id);
         default: 

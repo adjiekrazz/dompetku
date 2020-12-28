@@ -6,7 +6,15 @@ import { rupiah } from '../utils'
 class Home extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      totalSaldo: (this.props.incomeTotal + this.props.debtTotal) - (this.props.receivableTotal + this.props.expenseTotal)
+    }
   }
+
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <Row>
@@ -14,7 +22,7 @@ class Home extends React.Component {
           <Card>
             <Card.Body>
               Pemasukan <br></br>
-              <Badge variant="success">{rupiah(this.props.incomeTotal, 0, true)}</Badge>
+              <Badge variant="success">{rupiah(this.props.incomeTotal)}</Badge>
             </Card.Body>
           </Card>
         </Col>
@@ -22,7 +30,7 @@ class Home extends React.Component {
           <Card>
             <Card.Body>
               Piutang <br></br>
-              <Badge variant="primary">Rp. 17.000,00</Badge>
+              <Badge variant="primary">{rupiah(this.props.receivableTotal, 0, true)}</Badge>
             </Card.Body>
           </Card>
         </Col>
@@ -30,7 +38,7 @@ class Home extends React.Component {
           <Card>
             <Card.Body>
               Hutang <br></br>
-              <Badge variant="warning" className="text-gray">Rp. 126.000,00</Badge>
+              <Badge variant="warning" className="text-gray">{rupiah(this.props.debtTotal, 0, true)}</Badge>
             </Card.Body>
           </Card>
         </Col>
@@ -46,7 +54,7 @@ class Home extends React.Component {
           <Card>
             <Card.Body>
               <Card.Text className="text-center">
-                Saldo Anda : Rp. 20.000,00 <br></br>
+                Saldo Anda : {rupiah(this.state.totalSaldo, 0, true)} <br></br>
                 <i>Kurangi belanja yang tidak perlu, belajarlah hemat atau gunakan untuk investasi masa depan.</i>
               </Card.Text>
             </Card.Body>
@@ -59,8 +67,10 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    incomeTotal: state.income.length === 0 ? 0 : state.income.reduce((first, n) => Number(first.amount) + Number(n.amount)),
-    expenseTotal: state.expense.length === 0 ? 0 : state.expense.reduce((first, n) => Number(first.amount) + Number(n.amount))
+    incomeTotal: state.income.length === 0 ? 0 : state.income.reduce((val, n) => (val + Number(n.amount)), 0),
+    expenseTotal: state.expense.length === 0 ? 0 : state.expense.reduce((val, n) => (val + Number(n.amount)), 0),
+    debtTotal: state.debt.length === 0 ? 0 : state.debt.reduce((val, n) => (val + Number(n.amount)), 0),
+    receivableTotal: state.receivable.length === 0 ? 0 : state.receivable.reduce((val, n) => (val + Number(n.amount)), 0),
   }
 }
 

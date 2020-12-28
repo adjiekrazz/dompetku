@@ -18,6 +18,8 @@ class Navigation extends React.Component {
                     <Nav className="mr-auto">
                         <Link to="/income" className="nav-link">Income</Link>
                         <Link to="/expense" className="nav-link">Expense</Link>
+                        <Link to="/debt" className="nav-link">Debt</Link>
+                        <Link to="/receivable" className="nav-link">Receivable</Link>
                         <NavDropdown title="Report" id="collapsible-nav-dropdown">
                             <Link to="/savepdf" className="dropdown-item">Save as PDF</Link>
                             <Link to="/sendemail" className="dropdown-item">Send to Email</Link>

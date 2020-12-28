@@ -30,7 +30,7 @@ class App extends React.Component {
           this.props.setLiffData(data)
         },
         (error) => {
-          this.setState({ errors: [...error] })
+          this.setState({ errors: [error] })
         } 
       )
     }

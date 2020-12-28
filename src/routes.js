@@ -1,7 +1,9 @@
 import About from './pages/About'
+import Debt from './pages/Debt'
 import Expense from './pages/Expense'
 import Home from './pages/Home'
 import Income from './pages/Income'
+import Receivable from './pages/Receivable'
 
 const routes = [
     {
@@ -19,6 +21,16 @@ const routes = [
         title: 'Expense',
         path: '/expense',
         component: Expense
+    },
+    {
+        title: 'Debt',
+        path: '/debt',
+        component: Debt
+    },
+    {
+        title: 'Receivable',
+        path: '/receivable',
+        component: Receivable
     },
     {
         title: 'About',
