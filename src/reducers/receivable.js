@@ -10,8 +10,8 @@ export default function receivable(state = initialState, action) {
                     ...state,
                     action.data
                 ]
-        case DELETE_RECEIVABLE:
-            return state.filter((id) => id !== action.id);
+            case DELETE_RECEIVABLE:
+                return state.filter((item) => item.id !== action.id);
         default: 
             return state;
     }

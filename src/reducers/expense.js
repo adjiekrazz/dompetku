@@ -10,8 +10,8 @@ export default function expense(state = initialState, action) {
                     ...state,
                     action.data
                 ]
-        case DELETE_EXPENSE:
-            return state.filter((id) => id !== action.id);
+            case DELETE_EXPENSE:
+                return state.filter((item) => item.id !== action.id);
         default: 
             return state;
     }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Row, Col, Card, Table, Button, Modal, Form } from 'react-bootstrap'
+import { Row, Col, Card, Table, Button, Modal, Form, Badge } from 'react-bootstrap'
 import { rupiah, shortDate } from '../utils'
 
 class AddModal extends React.Component {
@@ -108,6 +108,13 @@ class Income extends React.Component {
     this.setState({ addModalShow: false })
   }
 
+  handleDelete(id) {
+    var confirmation = confirm('Anda yakin menghapus ?')
+    if (confirmation === true) {
+      this.props.deleteIncome(id)
+    }
+  }
+
   render() {
     return (
       <Row>
@@ -121,6 +128,7 @@ class Income extends React.Component {
                       <th>Tanggal</th>
                       <th>Jumlah</th>
                       <th>Keterangan</th>
+                      <th>Opsi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,6 +138,7 @@ class Income extends React.Component {
                         <td>{shortDate(value.date)}</td>
                         <td>{rupiah(value.amount, 0, true)}</td>
                         <td>{value.desc}</td>
+                        <td><Badge variant="danger"><a href="#" className="text-white" onClick={() => this.handleDelete(value.id)}>Hapus</a></Badge></td>
                       </tr>
                     )
                   }) : (<tr><td className="text-center" colSpan="3">Belum ada pemasukan.</td></tr>) }

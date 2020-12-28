@@ -10,8 +10,8 @@ export default function debt(state = initialState, action) {
                     ...state,
                     action.data
                 ]
-        case DELETE_DEBT:
-            return state.filter((id) => id !== action.id);
+            case DELETE_DEBT:
+                return state.filter((item) => item.id !== action.id);
         default: 
             return state;
     }

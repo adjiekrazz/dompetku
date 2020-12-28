@@ -11,7 +11,7 @@ export default function income(state = initialState, action) {
                     action.data
             ]
         case DELETE_INCOME:
-            return state.filter((id) => id !== action.id);
+            return state.filter((item) => item.id !== action.id);
         default: 
             return state;
     }
