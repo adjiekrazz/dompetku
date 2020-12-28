@@ -27,7 +27,7 @@ class Navigation extends React.Component {
                     </Nav>
                     <Nav>
                     <Link to="/about" className="nav-link">About</Link>
-                    <Link to="/" className="nav-link" onClick={() => this.props.handleLogout}>
+                    <Link to="/" className="nav-link" onClick={() => this.props.removeUser()}>
                         Keluar
                     </Link>
                     </Nav>
@@ -74,7 +74,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleLogout: () => dispatch({ type: 'REMOVE_USER' })
+        removeUser: () => dispatch({ type: 'REMOVE_USER' })
     }
 }
 
