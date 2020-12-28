@@ -46,7 +46,7 @@ class Navigation extends React.Component {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto"></Nav>
                     <Nav>
-                        <Nav.Link eventKey={2} href="#memes">
+                        <Nav.Link eventKey={2} href="#">
                             Login
                         </Nav.Link>
                     </Nav>
