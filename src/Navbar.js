@@ -12,20 +12,15 @@ class Navigation extends React.Component {
         return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Link to="/" className="navbar-brand" variant="dark">My Wallet</Link>
+                <Link to="#" className="navbar-brand" variant="dark">My Wallet</Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
+                        <Link to="/" className="nav-link">Home</Link>
                         <Link to="/income" className="nav-link">Income</Link>
                         <Link to="/expense" className="nav-link">Expense</Link>
                         <Link to="/debt" className="nav-link">Debt</Link>
                         <Link to="/receivable" className="nav-link">Receivable</Link>
-                        <NavDropdown title="Report" id="collapsible-nav-dropdown">
-                            <Link to="/savepdf" className="dropdown-item">Save as PDF</Link>
-                            <Link to="/sendemail" className="dropdown-item">Send to Email</Link>
-                            <NavDropdown.Divider />
-                            <Link to="/share" className="dropdown-item">Share to ..</Link>
-                        </NavDropdown>
                     </Nav>
                     <Nav>
                     <Link to="/about" className="nav-link">About</Link>
@@ -43,7 +38,7 @@ class Navigation extends React.Component {
         return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">Dompetku</Navbar.Brand>
+                <Navbar.Brand href="#home">My Wallet</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto"></Nav>
