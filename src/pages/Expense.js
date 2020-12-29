@@ -136,7 +136,7 @@ class Expense extends React.Component {
                     return (
                       <tr key={key}>
                         <td>{shortDate(value.date)}</td>
-                        <td>{rupiah(value.amount)}</td>
+                        <td>{rupiah(value.amount, 0, true)}</td>
                         <td>{value.desc}</td>
                         <td><Badge variant="danger"><a href="#" className="text-white" onClick={() => this.handleDelete(value.id)}>Hapus</a></Badge></td>
                       </tr>

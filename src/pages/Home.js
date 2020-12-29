@@ -22,7 +22,7 @@ class Home extends React.Component {
           <Card>
             <Card.Body>
               Pemasukan <br></br>
-              <Badge variant="success">{rupiah(this.props.incomeTotal)}</Badge>
+              <Badge variant="success">{rupiah(this.props.incomeTotal, 0, true)}</Badge>
             </Card.Body>
           </Card>
         </Col>
