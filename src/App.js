@@ -29,7 +29,7 @@ class App extends React.Component {
           }
           this.props.setLiffData(data)
 
-          if (data.isInClient) {
+          if (data.isInClient && !data.isLogin) {
             liff.login()
           }
         },
