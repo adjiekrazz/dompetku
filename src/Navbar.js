@@ -25,7 +25,7 @@ class Navigation extends React.Component {
                     <Nav>
                     <Link to="/about" className="nav-link">About</Link>
                     <Link to="/" className="nav-link" onClick={() => this.props.removeUser()}>
-                        Keluar
+                        Logout
                     </Link>
                     </Nav>
                 </Navbar.Collapse>
