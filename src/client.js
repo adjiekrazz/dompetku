@@ -14,7 +14,7 @@ hydrate(
   <Provider store={store}>
     <BrowserRouter>
       <Navbar />
-      <Container className="mt-5">
+      <Container>
         <App />
       </Container>
     </BrowserRouter>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
+import { Navbar, Nav, Card, Container, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 class Navigation extends React.Component {
@@ -53,11 +53,42 @@ class Navigation extends React.Component {
         )
     }
 
+    client() {
+        return (
+            <Row className="mt-2">
+                <Col>
+                    <ul className="nav nav-pills fluid">
+                        <li className="nav-item">
+                            <Link to="/" className="nav-link">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/income" className="nav-link">Income</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/expense" className="nav-link">Expense</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/debt" className="nav-link">Debt</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/receivable" className="nav-link">Receivable</Link>
+                        </li>
+                    </ul>
+                    <hr></hr>
+                </Col>
+            </Row>
+        )
+    }
+
     render() {
-        if (this.props.liffData.isLogin || this.props.liffData.isInClient) {
-            return this.isLogin()
+        if (!this.props.isInClient){
+            if (this.props.liffData.isLogin) {
+                return this.isLogin()
+            } else {
+                return this.isntLogin()
+            }
         } else {
-            return this.isntLogin()
+            return this.client()
         }
     }
 }

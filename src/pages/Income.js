@@ -115,9 +115,9 @@ class Income extends React.Component {
     }
   }
 
-  render() {
+  external() {
     return (
-      <Row>
+      <Row className="mt-4">
         <Col className="col-lg-12 mb-4">
           <Card>
             <Card.Body>
@@ -156,11 +156,58 @@ class Income extends React.Component {
       </Row>
     )
   }
+
+  client() {
+    return (
+      <Row>
+        <Col className="col-lg-12 mb-4">
+          <h6>Total Pemasukan : {this.state.total}</h6>
+          <Table striped bordered hover size="sm" responsive>
+            <thead>
+                <tr>
+                  <th>Tanggal</th>
+                  <th>Jumlah</th>
+                  <th>Keterangan</th>
+                  <th>Opsi</th>
+                </tr>
+            </thead>
+            <tbody>
+              {this.props.income.length > 0 ? this.props.income.map((value, key) => {
+                return (
+                  <tr key={key}>
+                    <td>{shortDate(value.date)}</td>
+                    <td>{rupiah(value.amount, 0, true)}</td>
+                    <td>{value.desc}</td>
+                    <td><Badge variant="danger"><a href="#" className="text-white" onClick={() => this.handleDelete(value.id)}>Hapus</a></Badge></td>
+                  </tr>
+                )
+              }) : (<tr><td className="text-center" colSpan="4">Belum ada pemasukan.</td></tr>) }
+            </tbody>
+          </Table>
+          <Button variant="success" size="sm" block onClick={() => this.setState({ addModalShow: true})}>Tambah Pemasukan</Button>
+          <AddModal
+            show={this.state.addModalShow}
+            onHide={() => this.setState({ addModalShow: false })}
+            onSubmit={this.handleSubmit.bind(this)}
+          ></AddModal>
+        </Col>
+      </Row>
+    )
+  }
+
+  render() {
+    if (this.props.liffData.isInClient) {
+      return this.client()
+    } else {
+      return this.external()
+    }
+  }
 }
 
 const mapStateToProps = (state) => {
   return {
-    income: state.income
+    income: state.income,
+    liffData: state.liffdata
   }
 }
 
