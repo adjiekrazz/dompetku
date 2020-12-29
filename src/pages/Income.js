@@ -122,7 +122,7 @@ class Income extends React.Component {
           <Card>
             <Card.Body>
               <Card.Text>Total Pemasukan : {this.state.total}</Card.Text>
-              <Table striped bordered hover size="sm">
+              <Table striped bordered hover size="sm" responsive>
                 <thead>
                     <tr>
                       <th>Tanggal</th>

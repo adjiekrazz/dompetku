@@ -38,7 +38,7 @@ class AddModal extends React.Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Tambah Pemasukan
+            Tambah Piutang
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -122,7 +122,7 @@ class Receivable extends React.Component {
           <Card>
             <Card.Body>
               <Card.Text>Total Piutang : {this.state.total}</Card.Text>
-              <Table striped bordered hover size="sm">
+              <Table striped bordered hover size="sm" responsive>
                 <thead>
                     <tr>
                       <th>Tanggal</th>
