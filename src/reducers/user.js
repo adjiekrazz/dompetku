@@ -11,6 +11,14 @@ export default function user(state = initialState, action) {
         case SAVE_USER:
             return { id: action.id, username: action.username }
         case REMOVE_USER:
+            if (liff.isInClient()) {
+                liff.sendMessages([
+                    {
+                        type: 'text',
+                        text: 'Berhasil simpan dompet. Jangan boros ya :)'
+                    }
+                ])
+            }
             liff.logout()
             liff.closeWindow()
             return { id: '', username: '' }
