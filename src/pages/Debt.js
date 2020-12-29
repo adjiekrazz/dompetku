@@ -141,7 +141,7 @@ class Debt extends React.Component {
                         <td><Badge variant="danger"><a href="#" className="text-white" onClick={() => this.handleDelete(value.id)}>Hapus</a></Badge></td>
                       </tr>
                     )
-                  }) : (<tr><td className="text-center" colSpan="3">Tidak ada hutang.</td></tr>) }
+                  }) : (<tr><td className="text-center" colSpan="4">Tidak ada hutang.</td></tr>) }
                 </tbody>
               </Table>
               <Button variant="success" size="sm" block onClick={() => this.setState({ addModalShow: true})}>Tambah Pemasukan</Button>

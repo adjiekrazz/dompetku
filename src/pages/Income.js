@@ -141,7 +141,7 @@ class Income extends React.Component {
                         <td><Badge variant="danger"><a href="#" className="text-white" onClick={() => this.handleDelete(value.id)}>Hapus</a></Badge></td>
                       </tr>
                     )
-                  }) : (<tr><td className="text-center" colSpan="3">Belum ada pemasukan.</td></tr>) }
+                  }) : (<tr><td className="text-center" colSpan="4">Belum ada pemasukan.</td></tr>) }
                 </tbody>
               </Table>
               <Button variant="success" size="sm" block onClick={() => this.setState({ addModalShow: true})}>Tambah Pemasukan</Button>
