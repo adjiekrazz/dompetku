@@ -28,6 +28,10 @@ class App extends React.Component {
             isLogin: liff.isLoggedIn()
           }
           this.props.setLiffData(data)
+
+          if (data.isInClient) {
+            liff.login()
+          }
         },
         (error) => {
           this.setState({ errors: [error] })
