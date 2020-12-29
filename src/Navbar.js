@@ -81,7 +81,7 @@ class Navigation extends React.Component {
     }
 
     render() {
-        if (!this.props.isInClient){
+        if (!this.props.liffData.isInClient){
             if (this.props.liffData.isLogin) {
                 return this.isLogin()
             } else {
