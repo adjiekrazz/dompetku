@@ -1,9 +1,10 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import { Row, Col, Card, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import liff from '@line/liff';
 import routes from './routes';
+import { ENDPOINT_URL } from './constants/url'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -60,6 +61,13 @@ class App extends React.Component {
     liff.login()
   }
 
+  openInExternal() {
+    liff.openWindow({
+      url: ENDPOINT_URL,
+      external: true
+    })
+  }
+
   render(){
     if (this.state.errors.length === 0) {
       if (this.props.liffData.isLogin) {
@@ -84,6 +92,15 @@ class App extends React.Component {
                   <Button variant="success" size="sm" block onClick={this.handleLogin}>Login</Button>
                 </Card.Body>
               </Card>
+              {this.props.liffData.isInClient ? () => {
+                return (
+                  <p className="mt-4 text-center">
+                    <Link to="#" onClick={() => this.openInExternal() }>
+                      Open in external browser
+                    </Link>
+                  </p>
+                )
+              } : '' }
             </Col>
           </Row>
         )
