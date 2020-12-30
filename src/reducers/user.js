@@ -16,7 +16,19 @@ export default function user(state = initialState, action) {
             liff.sendMessages([
                 {
                     type: 'text',
-                    text: 'Berhasil keluar My Wallet.. 0x10008F. \n Jangan boros ya .. 0x10008D'
+                    text: 'Berhasil keluar My Wallet.. $\nJangan boros ya .. $',
+                    emojis: [
+                        {
+                            index: 0,
+                            productId: '5ac1bfd5040ab15980c9b435',
+                            emojiId: '009'
+                        },
+                        {
+                            index: 2,
+                            productId: '5ac1bfd5040ab15980c9b435',
+                            emojiId: '030'
+                        }
+                    ]
                 }
             ]).then(liff.logout())
             liff.closeWindow()
