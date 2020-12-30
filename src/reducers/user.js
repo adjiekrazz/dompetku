@@ -12,7 +12,7 @@ export default function user(state = initialState, action) {
             return { id: action.id, username: action.username }
         case REMOVE_USER:
             liff.logout()
-            liff.closeWindow()
+            window.location.reload()
             return { id: '', username: '' }
         default:
             return state
