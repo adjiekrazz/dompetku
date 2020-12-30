@@ -19,12 +19,12 @@ export default function user(state = initialState, action) {
                     text: 'Berhasil keluar My Wallet.. $\nJangan boros ya .. $',
                     emojis: [
                         {
-                            index: 0,
+                            index: 28,
                             productId: '5ac1bfd5040ab15980c9b435',
                             emojiId: '009'
                         },
                         {
-                            index: 2,
+                            index: 49,
                             productId: '5ac1bfd5040ab15980c9b435',
                             emojiId: '030'
                         }
