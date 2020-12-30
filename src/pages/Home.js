@@ -54,7 +54,7 @@ class Home extends React.Component {
             </Card.Body>
           </Card>
         </Col>
-        <Col className="col-lg-12">
+        <Col className="col-lg-6">
           <Card>
             <Card.Img variant="top" src={this.props.user.pictureUrl}></Card.Img>
             <Card.Body>
