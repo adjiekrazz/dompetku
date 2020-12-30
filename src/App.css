@@ -4,6 +4,19 @@ body {
   font-family: sans-serif;
 }
 
+.nav-link {
+  padding: .5rem .75rem !important;
+}
+
+.nav-item > a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.nav-item:active {
+  background-color: aliceblue;
+}
+
 @media only screen and (max-width: 600px) {
   body {
     font-size: 0.75rem !important;
