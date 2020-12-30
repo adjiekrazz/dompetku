@@ -47,7 +47,6 @@ class App extends React.Component {
   async getProfile() {
     const profile = await liff.getProfile()
     this.props.saveUserData(profile)
-    console.log(this.props.user)
     return profile
   }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Card, Badge, Image } from 'react-bootstrap'
+import { Row, Col, Card, Badge, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { rupiah } from '../utils'
 
@@ -54,7 +54,8 @@ class Home extends React.Component {
                 <Card.Text className="text-center">
                   Halo, {this.props.user.displayName} <br/>
                   <b>Saldo Anda : {rupiah(this.state.totalSaldo, 0, true)} </b><br/>
-                  <i>Kurangi belanja yang tidak perlu, belajarlah hemat atau gunakan untuk investasi masa depan.</i>
+                  <i>Kurangi belanja yang tidak perlu, belajarlah hemat atau gunakan untuk investasi masa depan.</i> <br/>
+                  <Button variant="danger" size="sm" block onClick={() => this.props.removeUser()} className="mt-2">Logout</Button>
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -76,4 +77,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeUser: () => dispatch({ type: 'REMOVE_USER' })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
