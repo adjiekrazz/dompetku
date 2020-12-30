@@ -17,7 +17,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Row>
+      <Row className={this.props.liffData.isInClient ? '': 'mt-4'}>
         <Col className="col-sm-6 col-lg-3 mb-4">
           <Card>
             <Card.Body>
@@ -71,6 +71,7 @@ const mapStateToProps = (state) => {
     expenseTotal: state.expense.length === 0 ? 0 : state.expense.reduce((val, n) => (val + Number(n.amount)), 0),
     debtTotal: state.debt.length === 0 ? 0 : state.debt.reduce((val, n) => (val + Number(n.amount)), 0),
     receivableTotal: state.receivable.length === 0 ? 0 : state.receivable.reduce((val, n) => (val + Number(n.amount)), 0),
+    liffData: state.liffdata
   }
 }
 

@@ -1,9 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Row, Col, Card } from 'react-bootstrap'
 
-const About = () => {
+const About = (props) => {
     return (
-        <Row>
+        <Row className={props.liffData.isInClient ? '': 'mt-4'}>
             <Col>
                 <Card>
                     <Card.Body>
@@ -19,4 +20,10 @@ const About = () => {
     )
 }
 
-export default About
+const mapStateToProps = (state) => {
+    return {
+        liffData: state.liffdata
+    }
+}
+
+export default connect(mapStateToProps)(About)
