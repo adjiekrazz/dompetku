@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Navbar, Nav, Card, Container, Row, Col } from 'react-bootstrap'
+import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 class Navigation extends React.Component {
@@ -55,9 +55,10 @@ class Navigation extends React.Component {
 
     client() {
         return (
-            <Row className="mb-2">
+            <Container fluid className="mobile-nav">
+                <Row className="mb-2">
                 <Col>
-                    <ul className="nav nav-pills fluid mobile-nav">
+                    <ul className="nav nav-pills fluid">
                         <li className="nav-item">
                             <Link to="/" className="nav-link">Home</Link>
                         </li>
@@ -76,6 +77,7 @@ class Navigation extends React.Component {
                     </ul>
                 </Col>
             </Row>
+            </Container>
         )
     }
 
