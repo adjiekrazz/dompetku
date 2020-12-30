@@ -24,7 +24,7 @@ export default function user(state = initialState, action) {
                             emojiId: '009'
                         },
                         {
-                            index: 49,
+                            index: 48,
                             productId: '5ac1bfd5040ab15980c9b435',
                             emojiId: '030'
                         }
