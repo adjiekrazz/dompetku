@@ -16,7 +16,7 @@ export default function user(state = initialState, action) {
             liff.sendMessages([
                 {
                     type: 'text',
-                    text: 'Berhasil keluar My Wallet.. $\nJangan boros ya .. $',
+                    text: 'Berhasil keluar My Wallet.. $\nJangan boros ya.. $',
                     emojis: [
                         {
                             index: 28,
