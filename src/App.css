@@ -5,6 +5,7 @@ body {
 }
 
 .mobile-nav {
+  border-top: 2px solid lavenderblush;
   border-bottom: 2px solid lavenderblush;
 }
 
