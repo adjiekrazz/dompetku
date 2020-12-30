@@ -77,9 +77,11 @@ class App extends React.Component {
               <Card>
                 <Card.Body>
                   <Card.Text>
-                    Ops. Kamu harus login dulu nih. 
+                    Selamat datang di <i>My Wallet</i>. <br/>
+                    Nikmati kemudahan dalam pencatatan keuangan harian kamu.
+                    Silahkan login dengan akun LINE kamu.
                   </Card.Text>
-                  <Button variant="success" onClick={this.handleLogin}>Login</Button>
+                  <Button variant="success" size="sm" block onClick={this.handleLogin}>Login</Button>
                 </Card.Body>
               </Card>
             </Col>
