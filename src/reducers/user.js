@@ -13,13 +13,13 @@ export default function user(state = initialState, action) {
         case SAVE_USER:
             return (state = action.userdata)
         case REMOVE_USER:
-            liff.logout()
             liff.sendMessages([
                 {
                     type: 'text',
                     text: 'Berhasil keluar My Wallet.. 0x10008F. \n Jangan boros ya .. 0x10008D'
                 }
-            ]).then(liff.closeWindow())
+            ]).then(liff.logout())
+            liff.closeWindow()
             window.location.reload()
             return { id: '', username: '' }
         default:
