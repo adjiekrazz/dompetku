@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col, Card, Badge, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { rupiah } from '../utils'
+import { ENDPOINT_URL } from '../constants/url'
 
 class Home extends React.Component {
   constructor(props){
@@ -11,57 +12,66 @@ class Home extends React.Component {
     }
   }
 
+  openInExternal() {
+    liff.openWindow({
+      url: ENDPOINT_URL,
+      external: true
+    })
+  }
+
   render() {
     return (
-      <React.Fragment>
-        <Row className={this.props.liffData.isInClient ? '': 'mt-4'}>
-          <Col className="col-sm-6 col-lg-3 mb-4">
-            <Card>
-              <Card.Body>
-                Pemasukan <br></br>
-                <Badge variant="success">{rupiah(this.props.incomeTotal, 0, true)}</Badge>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col className="col-sm-6 col-lg-3 mb-4">
-            <Card>
-              <Card.Body>
-                Piutang <br></br>
-                <Badge variant="primary">{rupiah(this.props.receivableTotal, 0, true)}</Badge>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col className="col-sm-6 col-lg-3 mb-4">
-            <Card>
-              <Card.Body>
-                Hutang <br></br>
-                <Badge variant="warning" className="text-gray">{rupiah(this.props.debtTotal, 0, true)}</Badge>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col className="col-sm-6 col-lg-3 mb-4">
-            <Card>
-              <Card.Body>
-                Pengeluaran <br></br>
-                <Badge variant="danger">{rupiah(this.props.expenseTotal, 0, true)}</Badge>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col className="col-lg-12">
-            <Card>
-              <Card.Img variant="top" src={this.props.user.pictureUrl}></Card.Img>
-              <Card.Body>
-                <Card.Text className="text-center">
-                  Halo, {this.props.user.displayName} <br/>
-                  <b>Saldo Anda : {rupiah(this.state.totalSaldo, 0, true)} </b><br/>
-                  <i>Kurangi belanja yang tidak perlu, belajarlah hemat atau gunakan untuk investasi masa depan.</i> <br/>
+      <Row className={this.props.liffData.isInClient ? '': 'mt-4'}>
+        <Col className="col-sm-6 col-lg-3 mb-4">
+          <Card>
+            <Card.Body>
+              Pemasukan <br></br>
+              <Badge variant="success">{rupiah(this.props.incomeTotal, 0, true)}</Badge>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col className="col-sm-6 col-lg-3 mb-4">
+          <Card>
+            <Card.Body>
+              Piutang <br></br>
+              <Badge variant="primary">{rupiah(this.props.receivableTotal, 0, true)}</Badge>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col className="col-sm-6 col-lg-3 mb-4">
+          <Card>
+            <Card.Body>
+              Hutang <br></br>
+              <Badge variant="warning" className="text-gray">{rupiah(this.props.debtTotal, 0, true)}</Badge>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col className="col-sm-6 col-lg-3 mb-4">
+          <Card>
+            <Card.Body>
+              Pengeluaran <br></br>
+              <Badge variant="danger">{rupiah(this.props.expenseTotal, 0, true)}</Badge>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col className="col-lg-12">
+          <Card>
+            <Card.Img variant="top" src={this.props.user.pictureUrl}></Card.Img>
+            <Card.Body>
+              <Card.Text className="text-center">
+                Halo, {this.props.user.displayName} <br/>
+                <b>Saldo Anda : {rupiah(this.state.totalSaldo, 0, true)} </b><br/>
+                <i>Kurangi belanja yang tidak perlu, belajarlah hemat atau gunakan untuk investasi masa depan.</i> <br/>
+                {this.props.liffData.isInClient ? 
+                  <Button variant="primary" size="sm" block onClick={() => this.openInExternal()} className="mt-2">Open in external browser</Button>
+                  :
                   <Button variant="danger" size="sm" block onClick={() => this.props.removeUser()} className="mt-2">Logout</Button>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </React.Fragment>
+                }
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
     )
   }
 }
