@@ -14,15 +14,12 @@ export default function user(state = initialState, action) {
             return (state = action.userdata)
         case REMOVE_USER:
             liff.logout()
-            if (liff.isInClient()) {
-                liff.sendMessages([
-                    {
-                        type: 'text',
-                        text: 'Berhasil keluar My Wallet.. 0x10008F. \n Jangan boros ya .. 0x10008D'
-                    }
-                ])
-            }
-            liff.closeWindow()
+            liff.sendMessages([
+                {
+                    type: 'text',
+                    text: 'Berhasil keluar My Wallet.. 0x10008F. \n Jangan boros ya .. 0x10008D'
+                }
+            ]).then(liff.closeWindow())
             window.location.reload()
             return { id: '', username: '' }
         default:
