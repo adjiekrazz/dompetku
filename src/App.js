@@ -62,7 +62,7 @@ class App extends React.Component {
         );
       } else {
         return (
-          <Row>
+          <Row className="mt-4">
             <Col>
               <Card>
                 <Card.Body>
