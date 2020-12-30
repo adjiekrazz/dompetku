@@ -1,6 +1,6 @@
 import * as types from '../constants/ActionTypes'
 
-export const saveUser = (id, username) => ({ type: types.SAVE_USER, id, username })
+export const saveUser = (userdata) => ({ type: types.SAVE_USER, userdata })
 export const removeUser = () => ({ type: types.REMOVE_USER })
 export const addIncome = (data) => ({ type: types.ADD_INCOME, data})
 export const addExpense = (data) => ({ type: types.ADD_EXPENSE, data})

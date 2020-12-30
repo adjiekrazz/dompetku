@@ -32,12 +32,23 @@ class App extends React.Component {
           if (data.isInClient && !data.isLogin) {
             liff.login()
           }
+
+          if (this.props.liffData.isLogin) {
+            this.getProfile()
+          }
         },
         (error) => {
           this.setState({ errors: [error] })
         } 
       )
     }
+  }
+
+  async getProfile() {
+    const profile = await liff.getProfile()
+    this.props.saveUserData(profile)
+    console.log(this.props.user)
+    return profile
   }
 
   componentDidMount() {
@@ -99,12 +110,14 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
   return {
     liffData: state.liffdata,
+    user: state.user
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setLiffData: (data) => dispatch({ type: 'SET_LIFF_DATA', data })
+    setLiffData: (data) => dispatch({ type: 'SET_LIFF_DATA', data }),
+    saveUserData: (userdata) => dispatch({ type: 'SAVE_USER', userdata })
   }
 }
 
