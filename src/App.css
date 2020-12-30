@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+.mobile-nav {
+  border-bottom: 2px solid lavenderblush;
+}
+
 .nav-link {
   padding: .5rem .75rem !important;
 }

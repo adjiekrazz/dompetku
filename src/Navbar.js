@@ -55,9 +55,9 @@ class Navigation extends React.Component {
 
     client() {
         return (
-            <Row className="mt-2">
+            <Row>
                 <Col>
-                    <ul className="nav nav-pills fluid">
+                    <ul className="nav nav-pills fluid mobile-nav">
                         <li className="nav-item">
                             <Link to="/" className="nav-link">Home</Link>
                         </li>
@@ -74,7 +74,6 @@ class Navigation extends React.Component {
                             <Link to="/receivable" className="nav-link">Receivable</Link>
                         </li>
                     </ul>
-                    <hr></hr>
                 </Col>
             </Row>
         )
