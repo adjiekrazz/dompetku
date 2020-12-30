@@ -64,9 +64,9 @@ class Home extends React.Component {
                 <i>Kurangi belanja yang tidak perlu, belajarlah hemat atau gunakan untuk investasi masa depan.</i> <br/>
                 {this.props.liffData.isInClient ? 
                   <Button variant="primary" size="sm" block onClick={() => this.openInExternal()} className="mt-2">Open in external browser</Button>
-                  :
-                  <Button variant="danger" size="sm" block onClick={() => this.props.removeUser()} className="mt-2">Logout</Button>
+                  : ''                  
                 }
+                <Button variant="danger" size="sm" block onClick={() => this.props.removeUser()} className="mt-2">Logout / Exit</Button>
               </Card.Text>
             </Card.Body>
           </Card>
