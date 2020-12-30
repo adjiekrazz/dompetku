@@ -55,8 +55,8 @@ class Navigation extends React.Component {
 
     client() {
         return (
-            <Container fluid className="mobile-nav">
-                <Row className="mb-2">
+            <Container fluid className="mobile-nav mb-2">
+                <Row>
                 <Col>
                     <ul className="nav nav-pills fluid">
                         <li className="nav-item">
