@@ -14,7 +14,7 @@ export default function user(state = initialState, action) {
             return (state = action.userdata)
         case REMOVE_USER:
             liff.logout()
-            if (liff.isInClient) {
+            if (liff.isInClient()) {
                 liff.sendMessages([
                     {
                         type: 'text',
