@@ -22,6 +22,7 @@ export default function user(state = initialState, action) {
                     }
                 ])
             }
+            liff.closeWindow()
             window.location.reload()
             return { id: '', username: '' }
         default:
